@@ -25,13 +25,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
-<<<<<<< HEAD
 import javafx.stage.Stage;
-=======
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.ArcType;
->>>>>>> d2f5e2ec69cf85daf7d9ea715240576a27184459
 
 /**
  * FXML Controller class
@@ -56,6 +53,8 @@ public class MainWindowController implements Initializable {
     @FXML
     private BorderPane borderPaneCanvas;
     
+    private List<String> hairColorList = new ArrayList<>();
+    private List<String> faceFormList = new ArrayList<>();
     private String faceForm;
     
     /**
@@ -66,16 +65,17 @@ public class MainWindowController implements Initializable {
         // TODO
         this.canvas.scaleXProperty().bind(this.borderPaneCanvas.widthProperty().divide(this.canvas.getWidth()));
         this.canvas.scaleYProperty().bind(this.borderPaneCanvas.heightProperty().divide(this.canvas.getHeight()));
-<<<<<<< HEAD
         ListProperty<String> listPropertyHairColor = new SimpleListProperty<>();
         this.ListViewHairColor.itemsProperty().bind(listPropertyHairColor);
-        List<String> hairColorList = new ArrayList<>();
-        hairColorList.add("Brun");
-        hairColorList.add("Blond");
-        hairColorList.add("Chatain");
+        
+        hairColorList.add("vert");
+        hairColorList.add("jaune");
+        hairColorList.add("bleu");
         listPropertyHairColor.set(FXCollections.observableArrayList(hairColorList));
-    }    
-=======
+        
+        faceFormList.add("rond");
+        faceFormList.add("oval");
+        faceFormList.add("carre");
         this.faceForm = "rond";
         this.drawAvatar();
     }
@@ -96,7 +96,7 @@ public class MainWindowController implements Initializable {
             case "rond":
                 gc.strokeOval(50, 50, 100, 100);
                 break;
-            case "ovale":
+            case "oval":
                 gc.strokeOval(50, 50, 100, 150);
                 break;
             case "carre":
@@ -108,7 +108,7 @@ public class MainWindowController implements Initializable {
             case "jaune":
                 gc.setStroke(Color.YELLOW);
                 break;
-            case "green":
+            case "vert":
                 gc.setStroke(Color.GREEN);
                 break;
             case "bleu":
@@ -135,7 +135,6 @@ public class MainWindowController implements Initializable {
         gc.strokeLine(127, 50, 142*(1+length/20), 130);
         gc.strokeLine(129, 50, 144*(1+length/20), 130);
     }
->>>>>>> d2f5e2ec69cf85daf7d9ea715240576a27184459
     
     public void setContexte(AvatarContexte contexte){
        this.contexte = contexte;
