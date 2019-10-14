@@ -9,6 +9,8 @@ package com.mycompany.projetavatar;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,7 +48,9 @@ public class MainWindowController implements Initializable {
     @FXML
     private BorderPane borderPaneCanvas;
     
-    private String faceForm;
+    private StringProperty faceForm;
+    private DoubleProperty length;
+    private StringProperty color;
     
     /**
      * Initializes the controller class.
@@ -56,19 +60,21 @@ public class MainWindowController implements Initializable {
         // TODO
         this.canvas.scaleXProperty().bind(this.borderPaneCanvas.widthProperty().divide(this.canvas.getWidth()));
         this.canvas.scaleYProperty().bind(this.borderPaneCanvas.heightProperty().divide(this.canvas.getHeight()));
-        this.faceForm = "rond";
+        this.faceForm.setValue("rond");
+        this.length.setValue(0.0);
+        this.color.setValue("jaune");
         this.drawAvatar();
     }
     
     public void drawAvatar() {
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
         gc.restore();
-        this.drawFace(this.faceForm, gc);
+        this.drawFace(this.faceForm.getValue(), gc);
         gc.setStroke(Color.BLACK);
         gc.strokeOval(75, 75, 10, 10);
         gc.strokeOval(115, 75, 10, 10);
         gc.strokeLine(85, 120, 115, 120);
-        this.drawHair(14,"jaune", gc);
+        this.drawHair(this.length.getValue(),this.color.getValue(), gc);
     }
     
     public void drawFace(String form, GraphicsContext gc) {
@@ -122,6 +128,7 @@ public class MainWindowController implements Initializable {
        contexte.loginUtilisateurConnecteProperty().bind(this.username.textProperty());
        contexte.passwordUtilisateurConnectProperty().bind(this.password.textProperty());
        */
+       ;
     }
 
     @FXML
