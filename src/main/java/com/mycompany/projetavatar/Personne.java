@@ -5,6 +5,8 @@
  */
 package com.mycompany.projetavatar;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -15,10 +17,16 @@ import javafx.beans.property.StringProperty;
 public class Personne {
     private final StringProperty username = new SimpleStringProperty();
     private final StringProperty password = new SimpleStringProperty();
-
-    public Personne(String username, String password) {
+    private final StringProperty hairColor = new SimpleStringProperty();
+    private final IntegerProperty hairLength = new SimpleIntegerProperty();
+    private final StringProperty faceForm = new SimpleStringProperty();
+    
+    public Personne(String username, String password, String hairColor, Integer hairLength, String faceForm) {
         this.username.set(username);
         this.password.set(password);
+        this.hairColor.set(hairColor);
+        this.hairLength.set(hairLength);
+        this.faceForm.set(faceForm);
     }
     
     public String getUsername() {

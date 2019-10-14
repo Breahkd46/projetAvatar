@@ -51,7 +51,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.username.setText("Username");
-        this.password.setText("");
+        this.password.setText("Password");
         
         this.password.textProperty().addListener(new ChangeListener<String>(){
             @Override
