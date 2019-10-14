@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
+import javafx.scene.layout.BorderPane;
 
 /**
  * FXML Controller class
@@ -38,6 +39,8 @@ public class MainWindowController implements Initializable {
     private Button buttonCancel;
     @FXML
     private Canvas canvas;
+    @FXML
+    private BorderPane borderPaneCanvas;
     
     /**
      * Initializes the controller class.
@@ -45,7 +48,8 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        //this.canvas.setScaleX(this.canvas.parentProperty().get().;
+        this.canvas.scaleXProperty().bind(this.borderPaneCanvas.widthProperty().divide(this.canvas.getWidth()));
+        this.canvas.scaleYProperty().bind(this.borderPaneCanvas.heightProperty().divide(this.canvas.getHeight()));
     }    
     
     public void setContexte(LoginContexte contexte){

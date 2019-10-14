@@ -62,7 +62,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0">
+            <BorderPane fx:id="borderPaneCanvas" prefHeight="200.0" prefWidth="200.0">
                <center>
                   <Canvas fx:id="canvas" height="200.0" width="200.0" BorderPane.alignment="CENTER" />
                </center>
