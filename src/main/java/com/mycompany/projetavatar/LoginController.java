@@ -71,19 +71,17 @@ public class LoginController implements Initializable {
     private void processOk(ActionEvent event) throws IOException {
         Personne personneConnectee = this.contexte.identification();
         if ( personneConnectee != null){
-            System.out.println("Connecté");
             try{
                 Stage stage = (Stage) this.username.getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(App.class.getResource("MainWindow.fxml"));
                 BorderPane rootLayout = (BorderPane) loader.load();
                 MainWindowController controller = loader.getController();
-                controller.setContexte(new AvatarContexte(personneConnectee));
-                
+                AvatarContexte mainContexte = new AvatarContexte(personneConnectee);
+                controller.setContexte(mainContexte);
                 Scene scene = new Scene(rootLayout);
                 stage.setScene(scene);
                 stage.centerOnScreen();
-            
             }catch (IOException e){
                 e.printStackTrace();
             }

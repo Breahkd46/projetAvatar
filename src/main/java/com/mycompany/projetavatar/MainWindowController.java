@@ -53,42 +53,45 @@ public class MainWindowController implements Initializable {
     @FXML
     private BorderPane borderPaneCanvas;
     
-    private List<String> hairColorList = new ArrayList<>();
-    private List<String> faceFormList = new ArrayList<>();
-    private String faceForm;
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        this.canvas.scaleXProperty().bind(this.borderPaneCanvas.widthProperty().divide(this.canvas.getWidth()));
-        this.canvas.scaleYProperty().bind(this.borderPaneCanvas.heightProperty().divide(this.canvas.getHeight()));
-        ListProperty<String> listPropertyHairColor = new SimpleListProperty<>();
-        this.ListViewHairColor.itemsProperty().bind(listPropertyHairColor);
-        
-        hairColorList.add("vert");
-        hairColorList.add("jaune");
-        hairColorList.add("bleu");
-        listPropertyHairColor.set(FXCollections.observableArrayList(hairColorList));
-        
-        faceFormList.add("rond");
-        faceFormList.add("oval");
-        faceFormList.add("carre");
-        this.faceForm = "rond";
-        this.drawAvatar();
+    }
+    
+    public void setContexte(AvatarContexte contexte){
+       this.contexte = contexte;
+       this.drawAvatar();
+       
+       //set the values of the controls witht the initials value from the context.
+       this.SliderHairLength.setValue(this.contexte.personneConnectee.getHairLength().get());
+       this.ListViewHairColor.getSelectionModel().select(this.contexte.personneConnectee.getHairColor().get());
+       this.ComboBoxFaceForm.setValue(this.contexte.personneConnectee.getFaceForm().get());
+       
+       //bind the listener between the Personne in the contexte and the 3 controls.
+       this.contexte.personneConnectee.getHairLength().bindBidirectional(this.SliderHairLength.valueProperty());
+       this.contexte.personneConnectee.getHairColor().bind(this.ListViewHairColor.getSelectionModel().selectedItemProperty());
+       this.contexte.personneConnectee.getFaceForm().bindBidirectional(this.ComboBoxFaceForm.valueProperty());
+       
+       //Set the size of the canvas according to the size of the parent node.
+       this.canvas.scaleXProperty().bind(this.borderPaneCanvas.widthProperty().divide(this.canvas.getWidth()));
+       this.canvas.scaleYProperty().bind(this.borderPaneCanvas.heightProperty().divide(this.canvas.getHeight()));
+
+       //Populate the listView and the ComboBox with the ObservableList of the context.
+       this.ListViewHairColor.setItems(this.contexte.listHairColor);
+       this.ComboBoxFaceForm.getItems().addAll(this.contexte.listFaceForm);
     }
     
     public void drawAvatar() {
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
         gc.restore();
-        this.drawFace(this.faceForm, gc);
+        drawFace(this.contexte.personneConnectee.getFaceForm().get(), gc);
         gc.setStroke(Color.BLACK);
         gc.strokeOval(75, 75, 10, 10);
         gc.strokeOval(115, 75, 10, 10);
         gc.strokeLine(85, 120, 115, 120);
-        this.drawHair(14,"jaune", gc);
+        this.drawHair(14,this.contexte.personneConnectee.getHairColor().get(), gc);
     }
     
     public void drawFace(String form, GraphicsContext gc) {
@@ -103,6 +106,7 @@ public class MainWindowController implements Initializable {
                 gc.strokeOval(50, 50, 100, 100);
         }
     }
+    
     public void drawHair(double length, String color, GraphicsContext gc) {
         switch(color) {
             case "jaune":
@@ -136,25 +140,19 @@ public class MainWindowController implements Initializable {
         gc.strokeLine(129, 50, 144*(1+length/20), 130);
     }
     
-    public void setContexte(AvatarContexte contexte){
-       this.contexte = contexte;
-       this.contexte.personneConnectee.getHairLength().bindBidirectional(this.SliderHairLength.valueProperty());
-       this.contexte.personneConnectee.getHairColor().bind(this.ListViewHairColor.getSelectionModel().selectedItemProperty());
-       this.contexte.personneConnectee.getFaceForm().bindBidirectional(this.ComboBoxFaceForm.valueProperty());
-       
-       /*
-       contexte.loginUtilisateurConnecteProperty().bind(this.username.textProperty());
-       contexte.passwordUtilisateurConnectProperty().bind(this.password.textProperty());
-       */
-    }
-
     @FXML
     private void handleSave(ActionEvent event) {
-        this.buttonSave.setText(this.contexte.personneConnectee.getHairLength().toString());
+        //Print in the console the value of the Personne in the context.
+        System.out.println(this.contexte.personneConnectee.getUsername() + 
+                " : Hair lenght = " + this.contexte.personneConnectee.getHairLength().get()+ 
+                ", Hair color = "+ this.contexte.personneConnectee.getHairColor().get()+ 
+                ", face form = " + this.contexte.personneConnectee.getFaceForm().get() +
+        ".");
     }
 
     @FXML
     private void handleCancel(ActionEvent event) {
+        //Close the stage.
         Stage stage = (Stage) this.buttonCancel.getScene().getWindow();
         stage.close();
     }

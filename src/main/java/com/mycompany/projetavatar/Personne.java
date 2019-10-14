@@ -21,12 +21,16 @@ public class Personne {
     private final DoubleProperty hairLength = new SimpleDoubleProperty();
     private final StringProperty faceForm = new SimpleStringProperty();
     
-    public Personne(String username, String password, String hairColor, Integer hairLength, String faceForm) {
+    public Personne(String username, String password, String hairColor, Double hairLength, String faceForm) {
         this.username.set(username);
         this.password.set(password);
         this.hairColor.set(hairColor);
         this.hairLength.set(hairLength);
         this.faceForm.set(faceForm);
+    }
+    
+    public Personne(){
+        new Personne("Lorianne","justdance2","vert",7.0,"oval");
     }
     
     public String getUsername() {
@@ -64,4 +68,11 @@ public class Personne {
     public StringProperty getFaceForm() {
         return this.faceForm;
     }   
+
+    @Override
+    public String toString() {
+        return "Personne{" + "username=" + username + ", hairColor=" + hairColor + ", hairLength=" + hairLength + ", faceForm=" + faceForm + '}';
+    }
+    
+    
 }

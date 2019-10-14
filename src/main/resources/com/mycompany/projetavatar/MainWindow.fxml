@@ -53,15 +53,15 @@
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin></Label>
-                        <Label styleClass="item" stylesheets="@mainwindow.css" text="Forme du visage" wrapText="true" GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets left="10.0" />
-                           </GridPane.margin></Label>
                         <Slider fx:id="SliderHairLength" blockIncrement="1.0" max="20.0" showTickLabels="true" showTickMarks="true" stylesheets="@mainwindow.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
                         </Slider>
+                        <Label styleClass="item" stylesheets="@mainwindow.css" text="Forme du visage" wrapText="true" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin></Label>
                         <ComboBox fx:id="ComboBoxFaceForm" prefWidth="74.0" stylesheets="@mainwindow.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
