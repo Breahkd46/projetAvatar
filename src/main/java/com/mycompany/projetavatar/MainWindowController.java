@@ -6,6 +6,7 @@ package com.mycompany.projetavatar;
  * and open the template in the editor.
  */
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -13,10 +14,12 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author valo
+ * @author Etu
  */
 public class MainWindowController implements Initializable {
 
+    LoginContexte contexte;
+    
     /**
      * Initializes the controller class.
      */
@@ -24,5 +27,13 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    public void setContexte(LoginContexte contexte){
+       this.contexte = contexte;
+       /*
+       contexte.loginUtilisateurConnecteProperty().bind(this.username.textProperty());
+       contexte.passwordUtilisateurConnectProperty().bind(this.password.textProperty());
+       */
+    }
     
 }
