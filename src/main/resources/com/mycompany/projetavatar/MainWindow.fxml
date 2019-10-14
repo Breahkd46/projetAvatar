@@ -71,7 +71,7 @@
       </SplitPane>
    </center>
    <bottom>
-      <FlowPane prefHeight="37.0" prefWidth="626.0" BorderPane.alignment="CENTER">
+      <FlowPane hgap="10.0" prefHeight="37.0" prefWidth="626.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#handleSave" text="Save" />
             <Button fx:id="buttonCancel" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />

@@ -78,7 +78,7 @@ public class LoginController implements Initializable {
                 loader.setLocation(App.class.getResource("MainWindow.fxml"));
                 BorderPane rootLayout = (BorderPane) loader.load();
                 MainWindowController controller = loader.getController();
-                controller.setContexte(this.contexte);
+                controller.setContexte(new AvatarContexte(personneConnectee));
                 
                 Scene scene = new Scene(rootLayout);
                 stage.setScene(scene);
@@ -92,7 +92,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void processCancel(ActionEvent event) {
-        Stage stage = (Stage) this.username.getScene().getWindow();
+        Stage stage = (Stage) this.ButtonCancel.getScene().getWindow();
         stage.close();
     }
 
