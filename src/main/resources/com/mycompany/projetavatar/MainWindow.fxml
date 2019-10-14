@@ -62,11 +62,11 @@
                   </GridPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="345.0">
-               <children>
-                  <Canvas height="200.0" layoutX="82.0" layoutY="59.0" width="200.0" />
-               </children>
-            </AnchorPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <Canvas fx:id="canvas" height="200.0" width="200.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
         </items>
       </SplitPane>
    </center>

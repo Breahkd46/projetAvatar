@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
@@ -35,6 +36,8 @@ public class MainWindowController implements Initializable {
     private Button buttonSave;
     @FXML
     private Button buttonCancel;
+    @FXML
+    private Canvas canvas;
     
     /**
      * Initializes the controller class.
@@ -42,6 +45,7 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //this.canvas.setScaleX(this.canvas.parentProperty().get().;
     }    
     
     public void setContexte(LoginContexte contexte){
