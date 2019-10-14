@@ -9,8 +9,10 @@ package com.mycompany.projetavatar;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
@@ -29,6 +31,10 @@ public class MainWindowController implements Initializable {
     private Slider SliderHairLength;
     @FXML
     private ComboBox<?> ComboBoxFaceForm;
+    @FXML
+    private Button buttonSave;
+    @FXML
+    private Button buttonCancel;
     
     /**
      * Initializes the controller class.
@@ -44,6 +50,14 @@ public class MainWindowController implements Initializable {
        contexte.loginUtilisateurConnecteProperty().bind(this.username.textProperty());
        contexte.passwordUtilisateurConnectProperty().bind(this.password.textProperty());
        */
+    }
+
+    @FXML
+    private void handleSave(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleCancel(ActionEvent event) {
     }
     
 }
