@@ -9,7 +9,11 @@ package com.mycompany.projetavatar;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.Slider;
 
 /**
  * FXML Controller class
@@ -19,6 +23,12 @@ import javafx.fxml.Initializable;
 public class MainWindowController implements Initializable {
 
     LoginContexte contexte;
+    @FXML
+    private ListView<?> ListViewHairColor;
+    @FXML
+    private Slider SliderHairLength;
+    @FXML
+    private ComboBox<?> ComboBoxFaceForm;
     
     /**
      * Initializes the controller class.
