@@ -81,6 +81,13 @@ public class Personne {
         return ville.get();
     }
     
+    public void setVille(String ville) {
+        this.ville.set(ville);
+    }
+     
+    public void setName(String name) {
+        this.name.set(name);
+    }
     
 
     @Override

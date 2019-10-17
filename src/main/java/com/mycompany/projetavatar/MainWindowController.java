@@ -13,15 +13,18 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.collections.ListChangeListener.Change;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -44,6 +47,14 @@ public class MainWindowController implements Initializable {
     private TableColumn<Personne,String> tableColumnNom;
     @FXML
     private TableColumn<Personne,String> tableColumnVille;
+    @FXML
+    private TextField TextLogin;
+    @FXML
+    private TextField TextNom;
+    @FXML
+    private TextField TextVille;
+    @FXML
+    private Button buttonSave;
     
     /**
      * Initializes the controller class.
@@ -55,7 +66,12 @@ public class MainWindowController implements Initializable {
             
     public void setContexte(LoginContext contexte){
        this.contexte = contexte;
+       this.contexte.getPersonnes().getListe().addListener((Change<? extends Personne> c) -> {
+           this.listViewPersonnes.getItems().clear();
+           this.fillListView();
+       });
        this.fillListView();
+       
     }
     
     private void fillListView() {
@@ -64,6 +80,10 @@ public class MainWindowController implements Initializable {
         this.tableColumnNom.setCellValueFactory(new PropertyValueFactory<Personne, String>("name"));
         this.tableColumnVille.setCellValueFactory(new PropertyValueFactory<Personne, String>("ville"));
         System.out.println(this.contexte.getPersonnes().getListe());
+        
+    }
+    
+    public void lineSelected(Personne p) {
         
     }
 
@@ -109,6 +129,24 @@ public class MainWindowController implements Initializable {
         alert.setContentText(this.contexte.identification().toString());
 
         alert.showAndWait();
+    }
+
+    @FXML
+    private void OnSave(ActionEvent event) {
+        if (!(this.TextLogin.getText() == "" || this.TextNom.getText() == "" ||
+                this.TextVille.getText() == "")) {
+            Personne p = new Personne(
+                            this.TextLogin.getText(),
+                            "titi",
+                            "vert",
+                            3.0,
+                            "rond"
+                    );
+            p.setVille(this.TextVille.getText());
+            p.setName(this.TextNom.getText());
+            this.contexte.getPersonnes().getListe().add(p);                  
+            
+        }
     }
     
 }
