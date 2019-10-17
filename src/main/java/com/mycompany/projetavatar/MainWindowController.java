@@ -8,6 +8,7 @@ package com.mycompany.projetavatar;
 
 import com.mycompany.projetavatar.contexts.AvatarContext;
 import com.mycompany.projetavatar.contexts.LoginContext;
+import com.mycompany.projetavatar.models.Personne;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -88,8 +89,13 @@ public class MainWindowController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Profil");
         alert.setHeaderText("This is your profil informations :");
-        alert.setContentText(this.contexte.identification().toString());
-
+        Personne user = this.contexte.identification();
+        String profilShow = 
+                " Login : "+ user.getUsername()+
+                "\n Hair color : "+ user.getHairColor().get()+
+                "\n Hair length : "+user.getHairLength().get()+
+                "\n Face form : "+ user.getFaceForm().get();
+        alert.setContentText(profilShow);
         alert.showAndWait();
     }
     

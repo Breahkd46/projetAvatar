@@ -57,8 +57,8 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         this.username.setText("titi");
         this.password.setText("toto");
-        
-        this.password.textProperty().addListener(new ChangeListener<String>(){
+        progressPassword.setProgress(this.password.getText().length()/8.0f);
+        password.textProperty().addListener(new ChangeListener<String>(){
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
                 progressPassword.setProgress(newValue.length()/8.0f);
