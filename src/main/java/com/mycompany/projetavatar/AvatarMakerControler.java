@@ -37,7 +37,7 @@ import javafx.scene.shape.ArcType;
  *
  * @author Etu
  */
-public class MainWindowController implements Initializable {
+public class AvatarMakerControler implements Initializable {
 
     AvatarContexte contexte;
     @FXML
