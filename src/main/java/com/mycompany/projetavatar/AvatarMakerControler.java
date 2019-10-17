@@ -41,7 +41,7 @@ import javafx.scene.shape.ArcType;
  */
 public class AvatarMakerControler implements Initializable {
 
-    AvatarContexte contexte;
+    AvatarContext contexte;
     @FXML
     private ListView<String> ListViewHairColor;
     @FXML
@@ -67,7 +67,7 @@ public class AvatarMakerControler implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
-    public void setContexte(AvatarContexte contexte){
+    public void setContexte(AvatarContext contexte){
        this.contexte = contexte;
        this.drawAvatar();
 

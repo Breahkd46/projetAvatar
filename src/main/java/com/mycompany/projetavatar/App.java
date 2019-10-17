@@ -25,7 +25,7 @@ public class App extends Application {
             BorderPane rootLayout = (BorderPane) loader.load();
             
             LoginController controller = loader.getController();
-            LoginContexte contexte = new LoginContexte(new Personnes());
+            LoginContext contexte = new LoginContext(new Personnes());
             controller.setContexte (contexte); 
             
             this.scene = new Scene(rootLayout);

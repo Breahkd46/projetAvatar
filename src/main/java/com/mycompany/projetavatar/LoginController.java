@@ -41,7 +41,7 @@ public class LoginController implements Initializable {
     @FXML
     private TextField password;
     
-    LoginContexte contexte;
+    LoginContext contexte;
     @FXML
     private ProgressBar progressPassword;
     
@@ -61,7 +61,7 @@ public class LoginController implements Initializable {
         });
     }
 
-    public void setContexte(LoginContexte contexte){
+    public void setContexte(LoginContext contexte){
        this.contexte = contexte;
        contexte.loginUtilisateurConnecteProperty().bind(this.username.textProperty());
        contexte.passwordUtilisateurConnectProperty().bind(this.password.textProperty());
@@ -77,7 +77,7 @@ public class LoginController implements Initializable {
                 loader.setLocation(App.class.getResource("AvatarMaker.fxml"));
                 BorderPane rootLayout = (BorderPane) loader.load();
                 AvatarMakerControler controller = loader.getController();
-                AvatarContexte mainContexte = new AvatarContexte(personneConnectee);
+                AvatarContext mainContexte = new AvatarContext(personneConnectee);
                 controller.setContexte(mainContexte);
                 Scene scene = new Scene(rootLayout);
                 stage.setScene(scene);

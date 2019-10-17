@@ -12,12 +12,12 @@ import javafx.beans.property.StringProperty;
  *
  * @author Etu
  */
-public class LoginContexte {
+public class LoginContext {
     private Personnes personnes;
     private StringProperty loginUtilisateurConnecte;
     private StringProperty passwordUtilisateurConnecte;
     
-    public LoginContexte(Personnes personnes){
+    public LoginContext(Personnes personnes){
         this.personnes = personnes;
         this.loginUtilisateurConnecte = new SimpleStringProperty();
         this.passwordUtilisateurConnecte = new SimpleStringProperty();
