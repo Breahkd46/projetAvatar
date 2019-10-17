@@ -1,5 +1,7 @@
 package com.mycompany.projetavatar;
 
+import com.mycompany.projetavatar.contexts.LoginContext;
+import com.mycompany.projetavatar.models.Personnes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +27,7 @@ public class App extends Application {
             BorderPane rootLayout = (BorderPane) loader.load();
             
             LoginController controller = loader.getController();
-            LoginContexte contexte = new LoginContexte(new Personnes());
+            LoginContext contexte = new LoginContext(new Personnes());
             controller.setContexte (contexte); 
             
             this.scene = new Scene(rootLayout);

@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.projetavatar;
+package com.mycompany.projetavatar.contexts;
 
+import com.mycompany.projetavatar.models.Personnes;
+import com.mycompany.projetavatar.models.Personne;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -12,12 +14,12 @@ import javafx.beans.property.StringProperty;
  *
  * @author Etu
  */
-public class LoginContexte {
+public class LoginContext {
     private Personnes personnes;
     private StringProperty loginUtilisateurConnecte;
     private StringProperty passwordUtilisateurConnecte;
     
-    public LoginContexte(Personnes personnes){
+    public LoginContext(Personnes personnes){
         this.personnes = personnes;
         this.loginUtilisateurConnecte = new SimpleStringProperty();
         this.passwordUtilisateurConnecte = new SimpleStringProperty();

@@ -5,6 +5,8 @@
  */
 package com.mycompany.projetavatar;
 
+import com.mycompany.projetavatar.contexts.LoginContext;
+import com.mycompany.projetavatar.models.Personne;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,6 +26,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+
+
 /**
  * FXML Controller class
  *
@@ -40,8 +44,8 @@ public class LoginController implements Initializable {
     private TextField username;
     @FXML
     private TextField password;
-    
-    LoginContexte contexte;
+
+    LoginContext contexte;
     
     @FXML
     private ProgressBar progressPassword;
@@ -62,7 +66,7 @@ public class LoginController implements Initializable {
         });
     }
 
-    public void setContexte(LoginContexte contexte){
+    public void setContexte(LoginContext contexte){
        this.contexte = contexte;
        contexte.loginUtilisateurConnecteProperty().bind(this.username.textProperty());
        contexte.passwordUtilisateurConnectProperty().bind(this.password.textProperty());
@@ -78,7 +82,7 @@ public class LoginController implements Initializable {
                 loader.setLocation(App.class.getResource("MainWindow.fxml"));
                 BorderPane rootLayout = (BorderPane) loader.load();
                 MainWindowController controller = loader.getController();
-                LoginContexte mainContexte = this.contexte;
+                LoginContext mainContexte = this.contexte;
                 controller.setContexte(mainContexte);
                 Scene scene = new Scene(rootLayout);
                 

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.projetavatar;
+package com.mycompany.projetavatar.contexts;
 
+import com.mycompany.projetavatar.models.Personne;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.property.DoubleProperty;
@@ -18,10 +19,10 @@ import javafx.collections.ObservableList;
  *
  * @author Etu
  */
-public class AvatarContexte {
+public class AvatarContext {
     public Personne personneConnectee;    
     
-    public AvatarContexte(Personne personneConnectee){
+    public AvatarContext(Personne personneConnectee){
         this.personneConnectee = personneConnectee;
     }
 

@@ -7,6 +7,7 @@ package com.mycompany.projetavatar;
  */
 
 
+import com.mycompany.projetavatar.contexts.AvatarContext;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,7 +43,7 @@ import javafx.scene.shape.ArcType;
  */
 public class AvatarMakerController implements Initializable {
 
-    AvatarContexte contexte;
+    AvatarContext contexte;
     @FXML
     private ListView<String> ListViewHairColor;
     @FXML
@@ -65,7 +66,7 @@ public class AvatarMakerController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
-    public void setContexte(AvatarContexte contexte){
+    public void setContexte(AvatarContext contexte){
        this.contexte = contexte;
        this.drawAvatar();
 

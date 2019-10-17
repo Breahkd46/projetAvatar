@@ -6,6 +6,8 @@ package com.mycompany.projetavatar;
  * and open the template in the editor.
  */
 
+import com.mycompany.projetavatar.contexts.AvatarContext;
+import com.mycompany.projetavatar.contexts.LoginContext;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -22,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+
 /**
  * FXML Controller class
  *
@@ -29,7 +32,7 @@ import javafx.stage.Stage;
  */
 public class MainWindowController implements Initializable {
 
-    LoginContexte contexte;
+    LoginContext contexte;
     
     /**
      * Initializes the controller class.
@@ -37,9 +40,9 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    public void setContexte(LoginContexte contexte){
+    }
+            
+    public void setContexte(LoginContext contexte){
        this.contexte = contexte;
     }
 
@@ -51,7 +54,7 @@ public class MainWindowController implements Initializable {
             loader.setLocation(App.class.getResource("AvatarMaker.fxml"));
             BorderPane rootLayout = (BorderPane) loader.load();
             AvatarMakerController controller = loader.getController();
-            AvatarContexte avatarCont = new AvatarContexte(this.contexte.identification());
+            AvatarContext avatarCont = new AvatarContext(this.contexte.identification());
             controller.setContexte(avatarCont);
             Scene scene = new Scene(rootLayout);
             stage.setScene(scene);
