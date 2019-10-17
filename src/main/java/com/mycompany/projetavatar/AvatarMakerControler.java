@@ -9,6 +9,7 @@ package com.mycompany.projetavatar;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.ListProperty;
@@ -17,6 +18,7 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -54,6 +56,10 @@ public class AvatarMakerControler implements Initializable {
     private Canvas canvas;
     @FXML
     private BorderPane borderPaneCanvas;
+    
+    private final ObservableList<String> listHairColor = FXCollections.observableArrayList("vert","jaune","bleu");
+    private final ObservableList<String> listFaceForm = FXCollections.observableArrayList("rond","oval","carre");
+    
     /**
      * Initializes the controller class.
      */
@@ -80,8 +86,8 @@ public class AvatarMakerControler implements Initializable {
        this.canvas.scaleYProperty().bind(this.borderPaneCanvas.heightProperty().divide(this.canvas.getHeight()));
 
        //Populate the listView and the ComboBox with the ObservableList of the context.
-       this.ListViewHairColor.setItems(this.contexte.listHairColor);
-       this.ComboBoxFaceForm.getItems().addAll(this.contexte.listFaceForm);
+       this.ListViewHairColor.setItems(this.listHairColor);
+       this.ComboBoxFaceForm.getItems().addAll(this.listFaceForm);
        this.contexte.personneConnectee.getFaceForm().addListener((ob, oldV, newV) -> {
            this.drawAvatar();
        });
