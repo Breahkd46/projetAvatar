@@ -15,6 +15,7 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -81,17 +82,29 @@ public class MainWindowController implements Initializable {
        //Populate the listView and the ComboBox with the ObservableList of the context.
        this.ListViewHairColor.setItems(this.contexte.listHairColor);
        this.ComboBoxFaceForm.getItems().addAll(this.contexte.listFaceForm);
+       this.contexte.personneConnectee.getFaceForm().addListener((ob, oldV, newV) -> {
+           this.drawAvatar();
+       });
+       this.contexte.personneConnectee.getHairColor().addListener((ob, oldV, newV) -> {
+           this.drawAvatar();
+       });
+       this.contexte.personneConnectee.getHairLength().addListener((ob, oldV, newV) -> {
+           this.drawAvatar();
+       });
     }
 
     public void drawAvatar() {
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
-        gc.restore();
-        drawFace(this.contexte.personneConnectee.getFaceForm().get(), gc);
+        gc.clearRect(0, 0, this.canvas.getWidth(), this.canvas.getHeight());
         gc.setStroke(Color.BLACK);
+        drawFace(this.contexte.personneConnectee.getFaceForm().get(), gc);
         gc.strokeOval(75, 75, 10, 10);
         gc.strokeOval(115, 75, 10, 10);
         gc.strokeLine(85, 120, 115, 120);
-        this.drawHair(14,this.contexte.personneConnectee.getHairColor().get(), gc);
+        this.drawHair(
+                this.contexte.personneConnectee.getHairLength().get(),
+                this.contexte.personneConnectee.getHairColor().get(), 
+                gc);
     }
 
     public void drawFace(String form, GraphicsContext gc) {
@@ -103,7 +116,7 @@ public class MainWindowController implements Initializable {
                 gc.strokeOval(50, 50, 100, 150);
                 break;
             case "carre":
-                gc.strokeOval(50, 50, 100, 100);
+                gc.strokeRect(50, 50, 100, 100);
         }
     }
 
