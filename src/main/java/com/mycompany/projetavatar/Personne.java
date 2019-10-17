@@ -5,8 +5,8 @@
  */
 package com.mycompany.projetavatar;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -18,15 +18,19 @@ public class Personne {
     private final StringProperty username = new SimpleStringProperty();
     private final StringProperty password = new SimpleStringProperty();
     private final StringProperty hairColor = new SimpleStringProperty();
-    private final IntegerProperty hairLength = new SimpleIntegerProperty();
+    private final DoubleProperty hairLength = new SimpleDoubleProperty();
     private final StringProperty faceForm = new SimpleStringProperty();
     
-    public Personne(String username, String password, String hairColor, Integer hairLength, String faceForm) {
+    public Personne(String username, String password, String hairColor, Double hairLength, String faceForm) {
         this.username.set(username);
         this.password.set(password);
         this.hairColor.set(hairColor);
         this.hairLength.set(hairLength);
         this.faceForm.set(faceForm);
+    }
+    
+    public Personne(){
+        new Personne("Lorianne","justdance2","vert",7.0,"oval");
     }
     
     public String getUsername() {
@@ -52,4 +56,23 @@ public class Personne {
     public boolean checkPassword(String login, String password){
         return login.equals(this.getUsername()) && password.equals(this.getPassword());
     }
+    
+    public DoubleProperty getHairLength(){
+        return this.hairLength;
+    }
+
+    public StringProperty getHairColor() {
+        return this.hairColor;
+    }
+
+    public StringProperty getFaceForm() {
+        return this.faceForm;
+    }   
+
+    @Override
+    public String toString() {
+        return "Personne{" + "username=" + username + ", hairColor=" + hairColor + ", hairLength=" + hairLength + ", faceForm=" + faceForm + '}';
+    }
+    
+    
 }
