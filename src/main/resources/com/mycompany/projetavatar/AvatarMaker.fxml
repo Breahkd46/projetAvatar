@@ -62,7 +62,7 @@
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin></Label>
-                        <ComboBox fx:id="ComboBoxFaceForm" prefWidth="74.0" stylesheets="@mainwindow.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <ComboBox fx:id="ComboBoxFaceForm" prefWidth="74.0" stylesheets="@avatarMaker.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
