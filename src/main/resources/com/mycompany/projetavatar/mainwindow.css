@@ -5,3 +5,7 @@
 .mainFxmlClass {
 
 }
+
+.item {
+    -fx-margin: 10px;
+}

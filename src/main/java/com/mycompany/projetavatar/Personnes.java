@@ -22,7 +22,8 @@ public class Personnes {
     
     public Personnes(){
         this.liste = FXCollections.observableArrayList();
-        liste.add(new Personne("titi","toto"));
+        liste.add(new Personne("titi","toto","jaune",7.0,"rond"));
+        liste.add(new Personne("Lorianne","justdance2","vert",7.0,"oval"));
     }
     
     public ObservableList<Personne> getListe(){

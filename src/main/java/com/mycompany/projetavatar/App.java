@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -29,6 +30,8 @@ public class App extends Application {
             
             this.scene = new Scene(rootLayout);
             stage.setScene(scene);
+            stage.getIcons().add(new Image(App.class.getResourceAsStream("icon.png")));
+            stage.setTitle("Avatar Maker");
             stage.show();
         }catch (IOException e){
             e.printStackTrace();
