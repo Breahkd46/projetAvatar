@@ -18,10 +18,10 @@ import javafx.collections.ObservableList;
  *
  * @author Etu
  */
-public class AvatarContexte {
+public class AvatarContext {
     public Personne personneConnectee;    
     
-    public AvatarContexte(Personne personneConnectee){
+    public AvatarContext(Personne personneConnectee){
         this.personneConnectee = personneConnectee;
     }
 
