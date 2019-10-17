@@ -42,6 +42,7 @@ public class LoginController implements Initializable {
     private TextField password;
     
     LoginContexte contexte;
+    
     @FXML
     private ProgressBar progressPassword;
     
@@ -74,12 +75,16 @@ public class LoginController implements Initializable {
             try{
                 Stage stage = (Stage) this.username.getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(App.class.getResource("AvatarMaker.fxml"));
+                loader.setLocation(App.class.getResource("MainWindow.fxml"));
                 BorderPane rootLayout = (BorderPane) loader.load();
-                AvatarMakerControler controller = loader.getController();
-                AvatarContexte mainContexte = new AvatarContexte(personneConnectee);
+                MainWindowController controller = loader.getController();
+                LoginContexte mainContexte = this.contexte;
                 controller.setContexte(mainContexte);
                 Scene scene = new Scene(rootLayout);
+                
+                this.contexte.loginUtilisateurConnecteProperty().unbind();
+                this.contexte.passwordUtilisateurConnectProperty().unbind();
+                
                 stage.setScene(scene);
                 stage.centerOnScreen();
             }catch (IOException e){

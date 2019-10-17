@@ -28,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
@@ -39,7 +40,7 @@ import javafx.scene.shape.ArcType;
  *
  * @author Etu
  */
-public class AvatarMakerControler implements Initializable {
+public class AvatarMakerController implements Initializable {
 
     AvatarContexte contexte;
     @FXML
@@ -48,9 +49,6 @@ public class AvatarMakerControler implements Initializable {
     private Slider SliderHairLength;
     @FXML
     private ComboBox<String> ComboBoxFaceForm;
-    @FXML
-    private Button buttonSave;
-    @FXML
     private Button buttonCancel;
     @FXML
     private Canvas canvas;
@@ -157,23 +155,6 @@ public class AvatarMakerControler implements Initializable {
         gc.strokeLine(125, 50, 140*(1+length/20), 130);
         gc.strokeLine(127, 50, 142*(1+length/20), 130);
         gc.strokeLine(129, 50, 144*(1+length/20), 130);
-    }
-
-    @FXML
-    private void handleSave(ActionEvent event) {
-        //Print in the console the value of the Personne in the context.
-        System.out.println(this.contexte.personneConnectee.getUsername() +
-                " : Hair lenght = " + this.contexte.personneConnectee.getHairLength().get()+
-                ", Hair color = "+ this.contexte.personneConnectee.getHairColor().get()+
-                ", face form = " + this.contexte.personneConnectee.getFaceForm().get() +
-        ".");
-    }
-
-    @FXML
-    private void handleCancel(ActionEvent event) {
-        //Close the stage.
-        Stage stage = (Stage) this.buttonCancel.getScene().getWindow();
-        stage.close();
     }
 
 }

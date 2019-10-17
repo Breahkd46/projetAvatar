@@ -5,16 +5,15 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetavatar.MainWindowController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Principal">
             <items>
-              <MenuItem mnemonicParsing="false" text="Afficher mon profil" />
-                  <MenuItem mnemonicParsing="false" text="Configurer mon avatar" />
-                  <MenuItem mnemonicParsing="false" text="Quitter" />
+              <MenuItem mnemonicParsing="false" onAction="#onOpenProfil" text="Afficher mon profil" />
+                  <MenuItem mnemonicParsing="false" onAction="#onOpenAvatarMaker" text="Configurer mon avatar" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClose" text="Quitter" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Application">
