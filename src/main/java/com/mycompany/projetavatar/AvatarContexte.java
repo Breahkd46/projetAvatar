@@ -19,19 +19,10 @@ import javafx.collections.ObservableList;
  * @author Etu
  */
 public class AvatarContexte {
-    public Personne personneConnectee;
-    public final ObservableList<String> listHairColor;
-    public final ObservableList<String> listFaceForm;    
+    public Personne personneConnectee;    
     
     public AvatarContexte(Personne personneConnectee){
         this.personneConnectee = personneConnectee;
-        
-        //Populate the ObservableList for the listView to pick the hair color in the AvatarMaker.
-        this.listHairColor = FXCollections.observableArrayList("vert","jaune","bleu");
-        
-        //Populate the ObersableList for the ComboBox to pick the shape of the face in the AvatarMaker.
-        this.listFaceForm = FXCollections.observableArrayList("rond","oval","carre");
-
     }
 
 }
