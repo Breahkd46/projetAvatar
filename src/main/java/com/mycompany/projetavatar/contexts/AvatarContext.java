@@ -5,7 +5,7 @@
  */
 package com.mycompany.projetavatar.contexts;
 
-import com.mycompany.projetavatar.models.Personne;
+import com.mycompany.projetavatar.Personne;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.property.DoubleProperty;

@@ -20,6 +20,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -33,6 +36,14 @@ import javafx.stage.Stage;
 public class MainWindowController implements Initializable {
 
     LoginContext contexte;
+    @FXML
+    private TableView<Personne> listViewPersonnes;
+    @FXML
+    private TableColumn<Personne,String> tableColumnLogin;
+    @FXML
+    private TableColumn<Personne,String> tableColumnNom;
+    @FXML
+    private TableColumn<Personne,String> tableColumnVille;
     
     /**
      * Initializes the controller class.
@@ -44,9 +55,18 @@ public class MainWindowController implements Initializable {
             
     public void setContexte(LoginContext contexte){
        this.contexte = contexte;
+       this.fillListView();
+    }
+    
+    private void fillListView() {
+        this.listViewPersonnes.setItems(this.contexte.getPersonnes().getListe());
+        this.tableColumnLogin.setCellValueFactory(new PropertyValueFactory<Personne, String>("username"));
+        this.tableColumnNom.setCellValueFactory(new PropertyValueFactory<Personne, String>("name"));
+        this.tableColumnVille.setCellValueFactory(new PropertyValueFactory<Personne, String>("ville"));
+        System.out.println(this.contexte.getPersonnes().getListe());
+        
     }
 
-    @FXML
     private void onOpenAvatarMaker(ActionEvent event) {
         try{
             Stage stage = new Stage();
@@ -68,7 +88,6 @@ public class MainWindowController implements Initializable {
         
     }
 
-    @FXML
     private void onClose(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Quit?");
@@ -83,7 +102,6 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    @FXML
     private void onOpenProfil(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Profil");

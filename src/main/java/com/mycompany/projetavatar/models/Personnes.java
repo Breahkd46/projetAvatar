@@ -5,6 +5,7 @@
  */
 package com.mycompany.projetavatar.models;
 
+import com.mycompany.projetavatar.Personne;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

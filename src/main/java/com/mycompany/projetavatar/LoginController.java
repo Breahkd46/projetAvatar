@@ -6,7 +6,6 @@
 package com.mycompany.projetavatar;
 
 import com.mycompany.projetavatar.contexts.LoginContext;
-import com.mycompany.projetavatar.models.Personne;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

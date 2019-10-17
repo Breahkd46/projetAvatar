@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.projetavatar.models;
+package com.mycompany.projetavatar;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -15,8 +15,10 @@ import javafx.beans.property.StringProperty;
  * @author Etu
  */
 public class Personne {
-    private final StringProperty username = new SimpleStringProperty();
+    public final StringProperty username = new SimpleStringProperty();
     private final StringProperty password = new SimpleStringProperty();
+    public final StringProperty name = new SimpleStringProperty();
+    public final StringProperty ville = new SimpleStringProperty();
     private final StringProperty hairColor = new SimpleStringProperty();
     private final DoubleProperty hairLength = new SimpleDoubleProperty();
     private final StringProperty faceForm = new SimpleStringProperty();
@@ -24,6 +26,8 @@ public class Personne {
     public Personne(String username, String password, String hairColor, Double hairLength, String faceForm) {
         this.username.set(username);
         this.password.set(password);
+        this.name.set("Christophe");
+        this.ville.set("Cahors");
         this.hairColor.set(hairColor);
         this.hairLength.set(hairLength);
         this.faceForm.set(faceForm);
@@ -68,6 +72,16 @@ public class Personne {
     public StringProperty getFaceForm() {
         return this.faceForm;
     }   
+
+    public String getName() {
+        return name.get();
+    }
+
+    public String getVille() {
+        return ville.get();
+    }
+    
+    
 
     @Override
     public String toString() {
