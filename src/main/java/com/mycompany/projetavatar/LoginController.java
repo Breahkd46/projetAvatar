@@ -74,9 +74,9 @@ public class LoginController implements Initializable {
             try{
                 Stage stage = (Stage) this.username.getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(App.class.getResource("MainWindow.fxml"));
+                loader.setLocation(App.class.getResource("AvatarMaker.fxml"));
                 BorderPane rootLayout = (BorderPane) loader.load();
-                MainWindowController controller = loader.getController();
+                AvatarMakerControler controller = loader.getController();
                 AvatarContexte mainContexte = new AvatarContexte(personneConnectee);
                 controller.setContexte(mainContexte);
                 Scene scene = new Scene(rootLayout);
