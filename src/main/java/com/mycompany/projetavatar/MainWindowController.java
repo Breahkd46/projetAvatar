@@ -85,7 +85,9 @@ public class MainWindowController implements Initializable {
     }
 
     public void lineSelected(Personne p) {
-
+        this.textUsername.setText(p.getUsername());
+        this.textNom.setText(p.getName());
+        this.textVille.setText(p.getCity());
     }
 
     private void onOpenAvatarMaker(ActionEvent event) {
@@ -167,11 +169,7 @@ public class MainWindowController implements Initializable {
     @FXML
     private void onClick(MouseEvent event) {
         Personne selectedPers = this.listViewPersonnes.getSelectionModel().getSelectedItem();
-        this.textUsername.setText(selectedPers.getUsername());
-        this.textNom.setText(selectedPers.getName());
-        this.textVille.setText(selectedPers.getCity());
-
-
+        this.lineSelected(selectedPers);
     }
 
 }
