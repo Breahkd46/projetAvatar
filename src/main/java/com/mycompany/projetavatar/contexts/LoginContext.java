@@ -25,6 +25,12 @@ public class LoginContext {
         this.passwordUtilisateurConnecte = new SimpleStringProperty();
     }
     
+    public LoginContext(LoginContext loginContext) {
+        this.personnes = new Personnes(loginContext.getPersonnes().getListe());
+        this.loginUtilisateurConnecte = loginContext.loginUtilisateurConnecte;
+        this.passwordUtilisateurConnecte = loginContext.passwordUtilisateurConnecte;
+    }
+    
     public Personnes getPersonnes(){
         return this.personnes;
     }

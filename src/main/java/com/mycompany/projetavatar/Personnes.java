@@ -6,6 +6,7 @@
 package com.mycompany.projetavatar;
 
 import com.mycompany.projetavatar.Personne;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,12 +24,16 @@ public class Personnes {
     
     public Personnes(){
         this.liste = FXCollections.observableArrayList();
-        liste.add(new Personne("titi","toto","jaune",7.0,"rond"));
-        liste.add(new Personne("Lorianne","justdance2","vert",7.0,"oval"));
+        this.liste.add(new Personne("titi","toto","jaune",7.0,"rond"));
+        this.liste.add(new Personne("Lorianne","justdance2","vert",7.0,"oval"));
     }
     
     public ObservableList<Personne> getListe(){
-        return liste;
+        return this.liste;
+    }
+    
+    public void addPersonne(Personne p) {
+        this.liste.add(p);
     }
     
     public Personne identification(String login, String password){

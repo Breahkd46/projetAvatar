@@ -51,15 +51,14 @@ public class MainWindowController implements Initializable {
     private TableColumn<Personne,String> tableColumnNom;
     @FXML
     private TableColumn<Personne,String> tableColumnVille;
-    private TextField TextLogin;
-    private TextField TextNom;
-    private TextField TextVille;
     @FXML
     private TextField textNom;
     @FXML
     private TextField textVille;
     @FXML
     private Button boutonAjout;
+    @FXML
+    private Button buttonSupprimer;
     
     /**
      * Initializes the controller class.
@@ -70,11 +69,7 @@ public class MainWindowController implements Initializable {
     }
             
     public void setContexte(LoginContext contexte){
-       this.contexte = contexte;
-       this.contexte.getPersonnes().getListe().addListener((Change<? extends Personne> c) -> {
-           this.listViewPersonnes.getItems().clear();
-           this.fillListView();
-       });
+       this.contexte = new LoginContext(contexte);
        this.fillListView();
        
     }
@@ -84,7 +79,6 @@ public class MainWindowController implements Initializable {
         this.tableColumnLogin.setCellValueFactory(new PropertyValueFactory<Personne, String>("username"));
         this.tableColumnNom.setCellValueFactory(new PropertyValueFactory<Personne, String>("name"));
         this.tableColumnVille.setCellValueFactory(new PropertyValueFactory<Personne, String>("city"));
-        System.out.println(this.contexte.getPersonnes().getListe());
         
     }
     
@@ -143,23 +137,26 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void onAjout(ActionEvent event) {
-        Personne newPers = new Personne(this.textUsername.getText(),"password","jaune",1.0,"rond");
-    }
-    
-    private void OnSave(ActionEvent event) {
-        if (!(this.TextLogin.getText() == "" || this.TextNom.getText() == "" ||
-                this.TextVille.getText() == "")) {
+        if (!(this.textUsername.getText() == "" || this.textNom.getText() == "" ||
+                this.textVille.getText() == "")) {
             Personne p = new Personne(
-                            this.TextLogin.getText(),
+                            this.textUsername.getText(),
                             "titi",
                             "vert",
                             3.0,
-                            "rond"
+                            "rond",
+                            this.textNom.getText(),
+                            this.textVille.getText()
                     );
-            p.setCity(this.TextVille.getText());
-            p.setName(this.TextNom.getText());
-            this.contexte.getPersonnes().getListe().add(p);                  
-            
+            this.listViewPersonnes.getItems().add(p);
+        }
+    }
+
+    @FXML
+    private void onSuppression(ActionEvent event) {
+        if (this.listViewPersonnes.selectionModelProperty().isNotNull().get()) {
+            Personne p = this.listViewPersonnes.getSelectionModel().getSelectedItem();
+            this.listViewPersonnes.getItems().remove(p);
         }
     }
     
