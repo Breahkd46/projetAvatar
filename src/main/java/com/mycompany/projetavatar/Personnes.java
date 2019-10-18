@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.projetavatar.models;
+package com.mycompany.projetavatar;
 
+import com.mycompany.projetavatar.Personne;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

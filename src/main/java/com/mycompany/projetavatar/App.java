@@ -1,7 +1,6 @@
 package com.mycompany.projetavatar;
 
 import com.mycompany.projetavatar.contexts.LoginContext;
-import com.mycompany.projetavatar.models.Personnes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

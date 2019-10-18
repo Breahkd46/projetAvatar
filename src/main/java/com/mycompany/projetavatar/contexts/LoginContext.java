@@ -5,8 +5,8 @@
  */
 package com.mycompany.projetavatar.contexts;
 
-import com.mycompany.projetavatar.models.Personnes;
-import com.mycompany.projetavatar.models.Personne;
+import com.mycompany.projetavatar.Personnes;
+import com.mycompany.projetavatar.Personne;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 

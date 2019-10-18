@@ -8,7 +8,6 @@ package com.mycompany.projetavatar;
 
 import com.mycompany.projetavatar.contexts.AvatarContext;
 import com.mycompany.projetavatar.contexts.LoginContext;
-import com.mycompany.projetavatar.models.Personne;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -20,7 +19,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -34,6 +35,14 @@ import javafx.stage.Stage;
 public class MainWindowController implements Initializable {
 
     LoginContext contexte;
+    @FXML
+    private TextField textUsername;
+    @FXML
+    private TextField textNom;
+    @FXML
+    private TextField textVille;
+    @FXML
+    private Button boutonAjout;
     
     /**
      * Initializes the controller class.
@@ -97,6 +106,11 @@ public class MainWindowController implements Initializable {
                 "\n Face form : "+ user.getFaceForm().get();
         alert.setContentText(profilShow);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void onAjout(ActionEvent event) {
+        Personne newPers = new Personne(this.textUsername.getText(),"password","jaune",1.0,"rond");
     }
     
 }
