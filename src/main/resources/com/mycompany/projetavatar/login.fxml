@@ -52,7 +52,7 @@
    <bottom>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="1.0" prefWidth="442.0" BorderPane.alignment="CENTER">
          <items>
-            <ProgressBar fx:id="progressPassword" progress="0.0" />
+            <ProgressBar fx:id="progressPassword" progress="0.0" rotate="180.0" />
          </items>
       </ToolBar>
    </bottom>

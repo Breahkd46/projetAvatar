@@ -5,7 +5,7 @@
  */
 package com.mycompany.projetavatar.contexts;
 
-import com.mycompany.projetavatar.models.Personnes;
+import com.mycompany.projetavatar.Personnes;
 import com.mycompany.projetavatar.Personne;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -23,6 +23,12 @@ public class LoginContext {
         this.personnes = personnes;
         this.loginUtilisateurConnecte = new SimpleStringProperty();
         this.passwordUtilisateurConnecte = new SimpleStringProperty();
+    }
+    
+    public LoginContext(LoginContext loginContext) {
+        this.personnes = new Personnes(loginContext.getPersonnes().getListe());
+        this.loginUtilisateurConnecte = loginContext.loginUtilisateurConnecte;
+        this.passwordUtilisateurConnecte = loginContext.passwordUtilisateurConnecte;
     }
     
     public Personnes getPersonnes(){

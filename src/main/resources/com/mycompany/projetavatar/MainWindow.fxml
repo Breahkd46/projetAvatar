@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -11,10 +12,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetavatar.MainWindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetavatar.MainWindowController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -36,7 +38,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="listViewPersonnes" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="listViewPersonnes" onMouseClicked="#onClick" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
                 <TableColumn fx:id="tableColumnLogin" prefWidth="75.0" text="Login" />
                 <TableColumn fx:id="tableColumnNom" prefWidth="75.0" text="Nom" />
@@ -60,24 +62,36 @@
    <bottom>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="529.0" minWidth="10.0" prefWidth="134.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="564.0" minWidth="10.0" prefWidth="564.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="65.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="535.0" minWidth="10.0" prefWidth="535.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="TextLogin" GridPane.columnIndex="1" />
-            <TextField fx:id="TextNom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="TextVille" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Login" />
+            <Label text="Username" />
             <Label text="Nom" GridPane.rowIndex="1" />
             <Label text="Ville" GridPane.rowIndex="2" />
-            <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#OnSave" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="textUsername" GridPane.columnIndex="1" />
+            <TextField fx:id="textNom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textVille" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <FlowPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <Button fx:id="boutonAjout" mnemonicParsing="false" onAction="#onAjout" text="Ajouter" />
+                  <Button fx:id="buttonSupprimer" mnemonicParsing="false" onAction="#onSuppression" text="Supprimer" />
+               </children>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </FlowPane>
          </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+
       </GridPane>
    </bottom>
 </BorderPane>

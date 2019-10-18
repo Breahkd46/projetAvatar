@@ -22,11 +22,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -39,6 +41,7 @@ import javafx.stage.Stage;
 public class MainWindowController implements Initializable {
 
     LoginContext contexte;
+
     @FXML
     private TableView<Personne> listViewPersonnes;
     @FXML
@@ -47,15 +50,18 @@ public class MainWindowController implements Initializable {
     private TableColumn<Personne,String> tableColumnNom;
     @FXML
     private TableColumn<Personne,String> tableColumnVille;
+
     @FXML
-    private TextField TextLogin;
+    private TextField textUsername;
     @FXML
-    private TextField TextNom;
+    private TextField textNom;
     @FXML
-    private TextField TextVille;
+    private TextField textVille;
     @FXML
-    private Button buttonSave;
-    
+    private Button boutonAjout;
+    @FXML
+    private Button buttonSupprimer;
+
     /**
      * Initializes the controller class.
      */
@@ -63,28 +69,23 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-            
+
     public void setContexte(LoginContext contexte){
-       this.contexte = contexte;
-       this.contexte.getPersonnes().getListe().addListener((Change<? extends Personne> c) -> {
-           this.listViewPersonnes.getItems().clear();
-           this.fillListView();
-       });
+       this.contexte = new LoginContext(contexte);
        this.fillListView();
-       
+
     }
-    
+
     private void fillListView() {
         this.listViewPersonnes.setItems(this.contexte.getPersonnes().getListe());
         this.tableColumnLogin.setCellValueFactory(new PropertyValueFactory<Personne, String>("username"));
         this.tableColumnNom.setCellValueFactory(new PropertyValueFactory<Personne, String>("name"));
-        this.tableColumnVille.setCellValueFactory(new PropertyValueFactory<Personne, String>("ville"));
-        System.out.println(this.contexte.getPersonnes().getListe());
-        
+        this.tableColumnVille.setCellValueFactory(new PropertyValueFactory<Personne, String>("city"));
+
     }
-    
+
     public void lineSelected(Personne p) {
-        
+
     }
 
     private void onOpenAvatarMaker(ActionEvent event) {
@@ -105,7 +106,7 @@ public class MainWindowController implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
-        
+
     }
 
     private void onClose(ActionEvent event) {
@@ -116,7 +117,7 @@ public class MainWindowController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            Platform.exit(); 
+            Platform.exit();
             System.exit(0);
         } else {
         }
@@ -126,27 +127,51 @@ public class MainWindowController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Profil");
         alert.setHeaderText("This is your profil informations :");
-        alert.setContentText(this.contexte.identification().toString());
-
+        Personne user = this.contexte.identification();
+        String profilShow =
+                " Login : "+ user.getUsername()+
+                "\n Hair color : "+ user.getHairColor().get()+
+                "\n Hair length : "+user.getHairLength().get()+
+                "\n Face form : "+ user.getFaceForm().get();
+        alert.setContentText(profilShow);
         alert.showAndWait();
     }
 
     @FXML
-    private void OnSave(ActionEvent event) {
-        if (!(this.TextLogin.getText() == "" || this.TextNom.getText() == "" ||
-                this.TextVille.getText() == "")) {
+    private void onAjout(ActionEvent event) {
+        if (!(this.textUsername.getText().isBlank() ||
+                this.textNom.getText().isBlank() ||
+                this.textVille.getText().isBlank())) {
+
             Personne p = new Personne(
-                            this.TextLogin.getText(),
+                            this.textUsername.getText(),
                             "titi",
                             "vert",
                             3.0,
-                            "rond"
+                            "rond",
+                            this.textNom.getText(),
+                            this.textVille.getText()
                     );
-            p.setVille(this.TextVille.getText());
-            p.setName(this.TextNom.getText());
-            this.contexte.getPersonnes().getListe().add(p);                  
-            
+            this.listViewPersonnes.getItems().add(p);
         }
     }
-    
+
+    @FXML
+    private void onSuppression(ActionEvent event) {
+        if (this.listViewPersonnes.selectionModelProperty().isNotNull().get()) {
+            Personne p = this.listViewPersonnes.getSelectionModel().getSelectedItem();
+            this.listViewPersonnes.getItems().remove(p);
+        }
+    }
+
+    @FXML
+    private void onClick(MouseEvent event) {
+        Personne selectedPers = this.listViewPersonnes.getSelectionModel().getSelectedItem();
+        this.textUsername.setText(selectedPers.getUsername());
+        this.textNom.setText(selectedPers.getName());
+        this.textVille.setText(selectedPers.getCity());
+
+
+    }
+
 }
