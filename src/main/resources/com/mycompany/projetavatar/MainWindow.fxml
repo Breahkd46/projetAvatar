@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -22,9 +23,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Principal">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#onOpenProfil" text="Afficher mon profil" />
-                  <MenuItem mnemonicParsing="false" onAction="#onOpenAvatarMaker" text="Configurer mon avatar" />
-                  <MenuItem mnemonicParsing="false" onAction="#onClose" text="Quitter" />
+              <MenuItem mnemonicParsing="false" text="Afficher mon profil" />
+                  <MenuItem mnemonicParsing="false" text="Configurer mon avatar" />
+                  <MenuItem mnemonicParsing="false" text="Quitter" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Application">
@@ -38,11 +39,11 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="listViewPersonnes" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Login" />
-                <TableColumn prefWidth="75.0" text="Nom" />
-                  <TableColumn prefWidth="75.0" text="Ville" />
+                <TableColumn fx:id="tableColumnLogin" prefWidth="75.0" text="Login" />
+                <TableColumn fx:id="tableColumnNom" prefWidth="75.0" text="Nom" />
+                  <TableColumn fx:id="tableColumnVille" prefWidth="75.0" text="Ville" />
               </columns>
             </TableView>
             <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -90,6 +91,7 @@
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
+
       </GridPane>
    </bottom>
 </BorderPane>
