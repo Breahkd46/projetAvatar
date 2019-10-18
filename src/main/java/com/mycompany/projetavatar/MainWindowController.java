@@ -28,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -40,9 +41,7 @@ import javafx.stage.Stage;
 public class MainWindowController implements Initializable {
 
     LoginContext contexte;
-    @FXML
-    private TextField textUsername;
-
+    
     @FXML
     private TableView<Personne> listViewPersonnes;
     @FXML
@@ -51,9 +50,9 @@ public class MainWindowController implements Initializable {
     private TableColumn<Personne,String> tableColumnNom;
     @FXML
     private TableColumn<Personne,String> tableColumnVille;
-    private TextField TextLogin;
-    private TextField TextNom;
-    private TextField TextVille;
+
+    @FXML
+    private TextField textUsername;
     @FXML
     private TextField textNom;
     @FXML
@@ -84,7 +83,7 @@ public class MainWindowController implements Initializable {
         this.tableColumnLogin.setCellValueFactory(new PropertyValueFactory<Personne, String>("username"));
         this.tableColumnNom.setCellValueFactory(new PropertyValueFactory<Personne, String>("name"));
         this.tableColumnVille.setCellValueFactory(new PropertyValueFactory<Personne, String>("city"));
-        System.out.println(this.contexte.getPersonnes().getListe());
+        //System.out.println(this.contexte.getPersonnes().getListe());
         
     }
     
@@ -143,24 +142,33 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void onAjout(ActionEvent event) {
-        Personne newPers = new Personne(this.textUsername.getText(),"password","jaune",1.0,"rond");
-    }
-    
-    private void OnSave(ActionEvent event) {
-        if (!(this.TextLogin.getText() == "" || this.TextNom.getText() == "" ||
-                this.TextVille.getText() == "")) {
+        if (!(this.textUsername.getText().isBlank() || 
+                this.textNom.getText().isBlank() ||
+                this.textVille.getText().isBlank())) {
+            
             Personne p = new Personne(
-                            this.TextLogin.getText(),
+                            this.textUsername.getText(),
                             "titi",
                             "vert",
                             3.0,
                             "rond"
                     );
-            p.setCity(this.TextVille.getText());
-            p.setName(this.TextNom.getText());
+            p.setCity(this.textVille.getText());
+            p.setName(this.textNom.getText());
+            
             this.contexte.getPersonnes().getListe().add(p);                  
             
         }
+    }
+    
+    @FXML
+    private void onClick(MouseEvent event) {
+        Personne selectedPers = this.listViewPersonnes.getSelectionModel().getSelectedItem();
+        this.textUsername.setText(selectedPers.getUsername());
+        this.textNom.setText(selectedPers.getName());
+        this.textVille.setText(selectedPers.getCity());
+                
+        
     }
     
 }
