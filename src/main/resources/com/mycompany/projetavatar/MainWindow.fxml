@@ -38,7 +38,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="listViewPersonnes" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="listViewPersonnes" onMouseClicked="#onClick" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
                 <TableColumn fx:id="tableColumnLogin" prefWidth="75.0" text="Login" />
                 <TableColumn fx:id="tableColumnNom" prefWidth="75.0" text="Nom" />

@@ -28,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -40,8 +41,6 @@ import javafx.stage.Stage;
 public class MainWindowController implements Initializable {
 
     LoginContext contexte;
-    @FXML
-    private TextField textUsername;
 
     @FXML
     private TableView<Personne> listViewPersonnes;
@@ -51,6 +50,9 @@ public class MainWindowController implements Initializable {
     private TableColumn<Personne,String> tableColumnNom;
     @FXML
     private TableColumn<Personne,String> tableColumnVille;
+
+    @FXML
+    private TextField textUsername;
     @FXML
     private TextField textNom;
     @FXML
@@ -59,7 +61,7 @@ public class MainWindowController implements Initializable {
     private Button boutonAjout;
     @FXML
     private Button buttonSupprimer;
-    
+
     /**
      * Initializes the controller class.
      */
@@ -67,23 +69,23 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-            
+
     public void setContexte(LoginContext contexte){
        this.contexte = new LoginContext(contexte);
        this.fillListView();
-       
+
     }
-    
+
     private void fillListView() {
         this.listViewPersonnes.setItems(this.contexte.getPersonnes().getListe());
         this.tableColumnLogin.setCellValueFactory(new PropertyValueFactory<Personne, String>("username"));
         this.tableColumnNom.setCellValueFactory(new PropertyValueFactory<Personne, String>("name"));
         this.tableColumnVille.setCellValueFactory(new PropertyValueFactory<Personne, String>("city"));
-        
+
     }
-    
+
     public void lineSelected(Personne p) {
-        
+
     }
 
     private void onOpenAvatarMaker(ActionEvent event) {
@@ -104,7 +106,7 @@ public class MainWindowController implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
-        
+
     }
 
     private void onClose(ActionEvent event) {
@@ -115,7 +117,7 @@ public class MainWindowController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            Platform.exit(); 
+            Platform.exit();
             System.exit(0);
         } else {
         }
@@ -126,7 +128,7 @@ public class MainWindowController implements Initializable {
         alert.setTitle("Profil");
         alert.setHeaderText("This is your profil informations :");
         Personne user = this.contexte.identification();
-        String profilShow = 
+        String profilShow =
                 " Login : "+ user.getUsername()+
                 "\n Hair color : "+ user.getHairColor().get()+
                 "\n Hair length : "+user.getHairLength().get()+
@@ -137,8 +139,10 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void onAjout(ActionEvent event) {
-        if (!(this.textUsername.getText() == "" || this.textNom.getText() == "" ||
-                this.textVille.getText() == "")) {
+        if (!(this.textUsername.getText().isBlank() ||
+                this.textNom.getText().isBlank() ||
+                this.textVille.getText().isBlank())) {
+
             Personne p = new Personne(
                             this.textUsername.getText(),
                             "titi",
@@ -159,5 +163,15 @@ public class MainWindowController implements Initializable {
             this.listViewPersonnes.getItems().remove(p);
         }
     }
-    
+
+    @FXML
+    private void onClick(MouseEvent event) {
+        Personne selectedPers = this.listViewPersonnes.getSelectionModel().getSelectedItem();
+        this.textUsername.setText(selectedPers.getUsername());
+        this.textNom.setText(selectedPers.getName());
+        this.textVille.setText(selectedPers.getCity());
+
+
+    }
+
 }
