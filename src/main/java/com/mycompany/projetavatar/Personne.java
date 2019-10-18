@@ -18,7 +18,7 @@ public class Personne {
     public final StringProperty username = new SimpleStringProperty();
     private final StringProperty password = new SimpleStringProperty();
     public final StringProperty name = new SimpleStringProperty();
-    public final StringProperty ville = new SimpleStringProperty();
+    public final StringProperty city = new SimpleStringProperty();
     private final StringProperty hairColor = new SimpleStringProperty();
     private final DoubleProperty hairLength = new SimpleDoubleProperty();
     private final StringProperty faceForm = new SimpleStringProperty();
@@ -27,7 +27,17 @@ public class Personne {
         this.username.set(username);
         this.password.set(password);
         this.name.set("Christophe");
-        this.ville.set("Cahors");
+        this.city.set("Cahors");
+        this.hairColor.set(hairColor);
+        this.hairLength.set(hairLength);
+        this.faceForm.set(faceForm);
+    }
+    
+    public Personne(String username, String password, String hairColor, Double hairLength, String faceForm, String name, String city) {
+        this.username.set(username);
+        this.password.set(password);
+        this.name.set(name);
+        this.city.set(city);
         this.hairColor.set(hairColor);
         this.hairLength.set(hairLength);
         this.faceForm.set(faceForm);
@@ -77,12 +87,12 @@ public class Personne {
         return name.get();
     }
 
-    public String getVille() {
-        return ville.get();
+    public String getCity() {
+        return city.get();
     }
     
-    public void setVille(String ville) {
-        this.ville.set(ville);
+    public void setCity(String ville) {
+        this.city.set(ville);
     }
      
     public void setName(String name) {

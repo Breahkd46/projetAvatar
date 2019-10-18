@@ -83,7 +83,7 @@ public class MainWindowController implements Initializable {
         this.listViewPersonnes.setItems(this.contexte.getPersonnes().getListe());
         this.tableColumnLogin.setCellValueFactory(new PropertyValueFactory<Personne, String>("username"));
         this.tableColumnNom.setCellValueFactory(new PropertyValueFactory<Personne, String>("name"));
-        this.tableColumnVille.setCellValueFactory(new PropertyValueFactory<Personne, String>("ville"));
+        this.tableColumnVille.setCellValueFactory(new PropertyValueFactory<Personne, String>("city"));
         System.out.println(this.contexte.getPersonnes().getListe());
         
     }
@@ -156,7 +156,7 @@ public class MainWindowController implements Initializable {
                             3.0,
                             "rond"
                     );
-            p.setVille(this.TextVille.getText());
+            p.setCity(this.TextVille.getText());
             p.setName(this.TextNom.getText());
             this.contexte.getPersonnes().getListe().add(p);                  
             
